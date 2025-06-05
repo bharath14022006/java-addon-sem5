@@ -1,5 +1,6 @@
 import java.util.*;
-class Main {
+class vote
+    {
     public static void main(String[] args) {
    
         System.out.println("enter you age");
