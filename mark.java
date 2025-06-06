@@ -10,13 +10,13 @@ public class mark {
         int category;
         if (a >= 80 && a <= 100)
             category = 1;
-        else if (a >= 60)
+        else if (a >= 60 && a <= 79)
             category = 2;
-        else if (a >= 40)
+        else if (a >= 40 && a <= 59)
             category = 3;
-        else if (a >= 20)
+        else if (a >= 20 && a <= 39)
             category = 4;
-        else if (a >= 0)
+        else if (a >= 0 && a <= 19)
             category = 5;
         else
             category = -1;
@@ -43,3 +43,4 @@ public class mark {
 	}
 
 }
+
