@@ -21,7 +21,7 @@ public class salary {
 
 	public static void main(String[] args) {
 		salary in=new salary();
-		//in.salary(0);
-		//in.salary(1000, 1, 100);
-		//in.salary(1000, 1);
+		in.sal(1000);
+		//in.sal(1000, 1, 100);
+		//in.sal(1000, 1);
 	}
