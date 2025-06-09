@@ -2,20 +2,20 @@ package day3;
 
 public class salary {
 	
-	void salary(int salary) {
+	void sal(int amt) {
 			int total=10000;
 				System.out.println("your salary full salary"+" "+total);
 				
 				
 	}
-	void salary(int salary,int hour) {
-	 int totalpart=salary*hour;
+	void sal(int amt, int hour) {
+	 int totalpart=amt*hour;
 	 System.out.println("total parttime"+"  "+totalpart);
 		
 		
 }
-	void salary(int salary,int hour,int bonus) {
-		int totalfree=(salary*hour)+bonus;
+	void sal(int amt,int hour,int bonus) {
+		int totalfree=(amt*hour)+bonus;
 		System.out.println("total for freelancers"+"  "+totalfree);
 	}
 
