@@ -1,0 +1,54 @@
+create table employee(
+ empid int,
+name varchar(25),
+dept varchar(25),
+salary int,
+joindate date
+)
+INSERT INTO employee(empid, name, dept, salary, joindate)VALUES
+(1, 'faizal', 'CEO', 50000000, '2023-12-5'),
+(2, 'bharath', 'accounting', 200000, '2022-3-4'),
+(3, 'alwin', 'marketing', 1000000, '2021-6-9'),
+(4, 'bino', 'finance', 3000000, '2022-5-1'),
+(5, 'surya', 'marketing', 2000000, '2024-6-1'),
+(6, 'durai', 'editor', 200000, '2023-12-15')
+SELECT * FROM employee WHERE dept='marketing';
+//UPDATE table_name
+SET COL_NAME = MODIFY VALUE
+WHERE COLUMN_NAME = ID OR NAME
+UPDATE employee set salary =salary+5000 WHERE dept ='finance'; 	 
+for rename the table:
+	
+//RENAME TABLE old_table_name To New_Table_name 	 	 
+for rename the colUmn rename
+
+					
+//for Truncating the table:
+TRUNCATE TABLE TABLE_NAME;
+
+//For Droping the table:
+DROP TABLE TABLE_NAME;
+
+//For Droping the database:
+DROP database DB_Name
+ORDER BY Clause:
+     	SELECT * FROM TABLE_NAME
+	ORDER BY column_name DESC;
+
+SQL CLAUSE:
+	* WHERE
+	* GROUP BY
+	* HAVING 
+	* ORDERING
+	* LIMIT
+	* OFFSET
+	* JOIN
+	* UNION
+	* INTO
+	* AS
+	* DISTINCT
+	* IN
+	* BETWEEN
+	* LIKE
+	* EXISTS
+	* ALL/ANY
