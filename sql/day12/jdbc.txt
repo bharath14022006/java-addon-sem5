@@ -1,101 +1,48 @@
-download jar file (maven repository)
-
-create a java project - add jar file
-project -> right click -->build --> configure build path --> library --> class path --> add external jar files   --> apply and close.
+import java.sql.*;
 
 
+public class Jdbc {
 
-
-
-public class jdbc {
-	public static void main(String[] args) throws ClassNotFoundException {
-		
-		Class.forName("com.mysql.cj.jdbc.Driver");            // not preferable  method 
-		System.out.println("Driver loaded");                 
-		
-	}
-
-}
-
-_________________________________________________________________________________________________________________________________________________________________________________________________________
-
-public class jdbc {
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		
+	public static void main(String[] args) throws Exception {
 //		Class.forName("com.mysql.cj.jdbc.Driver");
-
-		String url="jdbc:mysql://localhost:3306/final";
-		String userName="root";
-		String Password="";
-		Connection con =DriverManager.getConnection(url,userName ,Password);
-		System.out.println("Driver loaded");
+		String url="jdbc:mysql://localhost:3306/info";
+		String username="root";
+		String password="";
 		
-	}
-
-}
-
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-String url = "jdbc:mysql://localhost:3306/info";
-		String userName = "root";
-		String Password = "";
-		Connection con = DriverManager.getConnection(url, userName, Password); // driver loading
-		System.out.println("Driver loaded");
-
-		Statement st = con.createStatement(); // create statement
-
-		String sql = "SELECT* from emp/dept";
-
-		ResultSet rs = st.executeQuery(sql);
-		rs.next();
-		System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3));
-		rs.next();
-		System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3));
-	
-
-_-__------_____________--------------___________________________-------------------------______________________________---------------------__________--------________________-----------------_______---
-
-
-
-While loop
-
-	ResultSet rs = st.executeQuery(sql);
-		while(rs.next()) {
-			System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3));
-		}
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-create and update
-
-		Statement st = con.createStatement(); // create statement
-
-		String sql = "insert into course values(01,'FSD')";
-		              create table course(cid int, course_name varchar(10));
-		String sql = "update course set cname='WD'where cid=01";
-
-
-		int val = st.executeUpdate(sql);
-		System.out.println("Created Successfully");
-		System.out.println("inserted"+" "+val+"rows");
-		System.out.println("Upadated"+" "+val+"rows");
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Using prepared Statement
-
-		int cid = 02;
-		String cname="IMS";
+		Connection connect= DriverManager.getConnection(url, username , password);
+		System.out.println("Driver Loader");
+		
+		
+		int cid =02;
+		String cname="WEB-DEVELOPEMENT";
 		String sql = "insert into course values(?,?)";
-		PreparedStatement st = con.prepareStatement(sql);
+		PreparedStatement st = connect.prepareStatement(sql);
 		st.setInt(1,cid);
 		st.setString(2, cname);
-		
-		
 		st.executeUpdate();
-		System.out.println("Doned using prepared Statement");
+		System.out.println("Don");
+		
+		
+//		Statement st=connect.createStatement();
+	
+//		String sql="update ";
+//		String sql="create table course(cid int , cname varchar(10))";
+//		
+//		int val=st.executeUpdate(sql);
+		System.out.println("table created successfully");
+		
+//		st.execute(sql);
+//		ResultSet rs=st.executeQuery(sql);
+//		
+//		while (rs.next()) {
+//			System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3));
+//			
+//		}
+//		rs.next();
+//		System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3));
+//		rs.next();
+//		System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3));
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	}
 
-
+}
