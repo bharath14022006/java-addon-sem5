@@ -1,0 +1,9 @@
+-- Maximum price
+SELECT product_name, price
+FROM products
+WHERE price = (SELECT MAX(price) FROM products);
+
+-- Minimum price
+SELECT product_name, price
+FROM products
+WHERE price = (SELECT MIN(price) FROM products);
