@@ -1,0 +1,4 @@
+SELECT department, COUNT(*) AS headcount,
+FROM employees
+WHERE department = 'IT'
+GROUP BY department;
