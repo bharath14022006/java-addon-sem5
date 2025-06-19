@@ -1,0 +1,3 @@
+SELECT course_id, COUNT(*) 
+FROM enroll
+GROUP BY course_id;
