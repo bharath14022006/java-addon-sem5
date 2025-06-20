@@ -4,8 +4,8 @@ public class StudentEmail {
 
 	public static void main(String[] args) {
 	   HashSet<String> stuemail=new HashSet();
-	   stuemail.add("akalya@gmail.com");
-	   stuemail.add("sandy@gmail.com");
+	   stuemail.add("bharath@gmail.com");
+	   stuemail.add("bino@gmail.com");
 	}
 	    for(String data:Stuemail) {
         System.out.println("data");
