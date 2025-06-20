@@ -1,0 +1,157 @@
+Microsoft Windows [Version 10.0.19045.2130]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql
+ERROR 1045 (28000): Access denied for user 'ODBC'@'localhost' (using password: NO)
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root p
+ERROR 1049 (42000): Unknown database 'p'
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 55
+Server version: 8.0.37 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| addon              |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.06 sec)
+
+mysql> CREATE DATABASE hotel_reservation;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| addon              |
+| hotel_reservation  |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use hotel_reservation
+Database changed
+mysql> show table
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> show tables;
+Empty set (0.01 sec)
+
+mysql> CREATE TABLE customers (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(100),
+    ->     email VARCHAR(100)
+    -> sssss;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sssss' at line 5
+mysql> CREATE TABLE customers (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(100),
+    ->     email VARCHAR(100),
+    ->    phone no int
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'no int' at line 5
+mysql> CREATE TABLE customers (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(100),
+    ->     email VARCHAR(100)
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> ALTER TABLE customers
+    -> ADD phone VARCHAR(15);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE rooms (
+    ->     room_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     room_number VARCHAR(10),
+    ->     room_type VARCHAR(50),
+    ->     is_reserved BOOLEAN DEFAULT FALSE
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CREATE TABLE reservations (
+    ->     reservation_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     customer_id INT,
+    ->     room_id INT,
+    ->     reservation_date DATE,
+    ->     FOREIGN KEY (customer_id) REFERENCES customers(id),
+    ->     FOREIGN KEY (room_id) REFERENCES rooms(room_id)
+    -> )
+    -> ;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show  tables;
++-----------------------------+
+| Tables_in_hotel_reservation |
++-----------------------------+
+| customers                   |
+| reservations                |
+| rooms                       |
++-----------------------------+
+3 rows in set (0.00 sec)
+
+mysql> ALTER TABLE rooms
+    -> ADD price DECIMAL(10,2);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO rooms (room_number, room_type, is_reserved, price)
+    -> VALUES
+    -> ('101', 'Standard', FALSE, 1200.00),
+    -> ('102', 'Standard', FALSE, 1200.00),
+    -> ('103', 'Standard', FALSE, 1200.00),
+    -> ('104', 'Standard', FALSE, 1200.00),
+    -> ('105', 'Standard', FALSE, 1200.00),
+    -> ('106', 'Standard', FALSE, 1200.00),
+    -> ('107', 'Standard', FALSE, 1200.00),
+    -> ('108', 'Standard', FALSE, 1200.00),
+    -> ('109', 'Standard', FALSE, 1200.00),
+    -> ('110', 'Standard', FALSE, 1200.00),
+    ->
+    -> ('201', 'Deluxe', FALSE, 2000.00),
+    -> ('202', 'Deluxe', FALSE, 2000.00),
+    -> ('203', 'Deluxe', FALSE, 2000.00),
+    -> ('204', 'Deluxe', FALSE, 2000.00),
+    -> ('205', 'Deluxe', FALSE, 2000.00),
+    -> ('206', 'Deluxe', FALSE, 2000.00),
+    -> ('207', 'Deluxe', FALSE, 2000.00),
+    -> ('208', 'Deluxe', FALSE, 2000.00),
+    -> ('209', 'Deluxe', FALSE, 2000.00),
+    -> ('210', 'Deluxe', FALSE, 2000.00),
+    ->
+    -> ('301', 'Suite', FALSE, 3000.00),
+    -> ('302', 'Suite', FALSE, 3000.00),
+    -> ('303', 'Suite', FALSE, 3000.00),
+    -> ('304', 'Suite', FALSE, 3000.00),
+    -> ('305', 'Suite', FALSE, 3000.00),
+    -> ('306', 'Suite', FALSE, 3000.00),
+    -> ('307', 'Suite', FALSE, 3000.00),
+    -> ('308', 'Suite', FALSE, 3000.00),
+    -> ('309', 'Suite', FALSE, 3000.00),
+    -> ('310', 'Suite', FALSE, 3000.00);
+Query OK, 30 rows affected (0.01 sec)
+Records: 30  Duplicates: 0  Warnings: 0
+
+mysql>
